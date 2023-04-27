@@ -43,13 +43,14 @@ namespace DistributedLock
                             }
                             Thread.Sleep(1000);
                         }
-                        redisClient.ReleaseLock(product.Id);
+                        
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Lock Exception : {ex}");
                     }
-
+                    
+                    redisClient.ReleaseLock(product.Id);
                 });
                 threads.Add(t);
                 t.Start();
